@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FEC6A1]/20 to-[#FEC6A1]/10">
+    <div className="min-h-screen bg-gradient-to-br from-[#FEC6A1]/50 to-[#FEC6A1]/30">
       <div className="container py-8 px-4 mx-auto">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-4">
