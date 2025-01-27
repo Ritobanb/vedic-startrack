@@ -2,10 +2,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin, User, Users } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const BirthChartForm = () => {
   const [formData, setFormData] = useState({
+    name: "",
+    gender: "",
     date: "",
     time: "",
     place: "",
@@ -19,6 +28,43 @@ export const BirthChartForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-md">
+      <div className="space-y-2">
+        <Label htmlFor="name" className="flex items-center gap-2">
+          <User className="w-4 h-4" />
+          Full Name
+        </Label>
+        <Input
+          id="name"
+          type="text"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          placeholder="Enter your full name"
+          className="w-full"
+          required
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="gender" className="flex items-center gap-2">
+          <Users className="w-4 h-4" />
+          Gender
+        </Label>
+        <Select
+          value={formData.gender}
+          onValueChange={(value) => setFormData({ ...formData, gender: value })}
+          required
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select gender" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="male">Male</SelectItem>
+            <SelectItem value="female">Female</SelectItem>
+            <SelectItem value="other">Other</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       <div className="space-y-2">
         <Label htmlFor="date" className="flex items-center gap-2">
           <Calendar className="w-4 h-4" />
